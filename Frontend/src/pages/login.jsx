@@ -24,11 +24,19 @@ function Login() {
             return handleError("Please fill your details")
         }
         try {
+<<<<<<< HEAD
             const url = 'http://localhost:8080/auth/login'
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
+=======
+            const url = 'https://passop-gsc4.onrender.com/auth/login'
+            const response = await fetch(url,{
+                method:"POST",
+                headers:{
+                    'Content-Type':'application/json'
+>>>>>>> 981256d7659e531dfce8b1e67614d4d9dfeacd4c
                 },
                 body: JSON.stringify(loginInfo)
             });

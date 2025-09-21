@@ -23,7 +23,7 @@ function Login() {
             return handleError("Please fill your details")
         }
         try {
-            const url = 'https://pass-op-api.vercel.app/auth/login'
+            const url = 'https://passop-gsc4.onrender.com/auth/login'
             const response = await fetch(url,{
                 method:"POST",
                 headers:{

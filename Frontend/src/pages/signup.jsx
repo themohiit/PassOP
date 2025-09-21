@@ -24,11 +24,7 @@ function Signup() {
             if(!name || !email || !password){
                 return handleError('name, email and password are required')
             }
-<<<<<<< HEAD
-            try {const url = 'http://localhost:8080/auth/signup';
-=======
             try {const url = 'https://passop-gsc4.onrender.com/auth/signup';
->>>>>>> 981256d7659e531dfce8b1e67614d4d9dfeacd4c
             const response = await fetch(url,{
                 method:"POST",
                 headers:{

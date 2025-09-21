@@ -17,7 +17,7 @@ function Manager() {
 
   const fetchpassword = async () => {
 
-    const url = "https://pass-op-api.vercel.app/auth/passwords";
+    const url = "https://passop-gsc4.onrender.com/auth/passwords";
     try {
       const response = await fetch(url, {
         method: "GET",
@@ -56,7 +56,7 @@ function Manager() {
   const savePassword = async () => {
     if (form.website.length > 3 && form.username.length > 3 && form.password.length > 3) {
       setpasswordArray([...passwordArray, { ...form, id2: uuidv4() }])
-      const url = "https://pass-op-api.vercel.app/auth/passwords";
+      const url = "https://passop-gsc4.onrender.com/auth/passwords";
       try {
         const response = await fetch(url, {
           method: "POST",
@@ -100,7 +100,7 @@ function Manager() {
     const token = localStorage.getItem('token');
     try {
       // Call your backend delete API
-      const response = await fetch(`https://pass-op-api.vercel.app/auth/passwords/${id}`, {
+      const response = await fetch(`https://passop-gsc4.onrender.com/auth/passwords/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

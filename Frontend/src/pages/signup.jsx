@@ -2,7 +2,7 @@ import React , {useState} from "react";
 import {Link,  useNavigate} from 'react-router-dom'
 import { ToastContainer } from "react-toastify";
 import { handleError,handleSuccess } from "../utils";
-
+import { motion } from "framer-motion"
 
 function Signup() {
     const [signupInfo, setSignupInfo] = useState({
@@ -24,7 +24,7 @@ function Signup() {
             if(!name || !email || !password){
                 return handleError('name, email and password are required')
             }
-            try {const url = 'https://pass-op-api.vercel.app/auth/signup';
+            try {const url = 'http://localhost:8080/auth/signup';
             const response = await fetch(url,{
                 method:"POST",
                 headers:{
@@ -57,45 +57,98 @@ function Signup() {
 
 
   return (
-    <div className="bg-slate-600 h-[100vh] flex items-center justify-center">
-        <div className="form bg-white  w-[40vw] h-[60vh] flex flex-col items-center text-center rounded-2xl">
-            <h1 className="text-4xl font-bold mb-16">Sign up </h1>
-            <form onSubmit={handleSignup} >
-                <div>
-                    <label htmlFor="name">Name</label>
-                    <input className="m-2.5 p-2 rounded-2xl border" type="text"
-                            onChange={handleChange}
-                            name='name'
-                            autoFocus
-                            placeholder="Enter your name"
-                            value={signupInfo.name} />
-                </div>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input className="m-2.5 p-2 rounded-2xl border" type="email"
-                            onChange={handleChange}
-                            name = 'email'
-                          
-                            placeholder="Enter your email"
-                            value={signupInfo.email} />
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input className="m-2.5 p-2 rounded-2xl border" type="password"
-                            onChange={handleChange}
-                            name='password'
-                            
-                            placeholder="Enter your password"
-                            value={signupInfo.password} />
-                </div>
-                <button className="bg-blue-900 font-bold mb-5 text-white rounded-2xl p-2 " type='submit'>Signup</button>
-                <div>Already have an account ?
-                     <Link to="/login">Login</Link>
-                </div>
-            </form>
-        </div>
-        <ToastContainer />
-    </div>
+   <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-black flex items-center justify-center px-4">
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    className="bg-white/10 backdrop-blur-md w-full max-w-md p-8 rounded-2xl shadow-xl text-white"
+  >
+    <motion.h1
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.3, duration: 0.5 }}
+      className="text-4xl font-extrabold mb-10 text-center"
+    >
+      Sign Up
+    </motion.h1>
+
+    <form onSubmit={handleSignup} className="flex flex-col space-y-6">
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.4 }}
+        className="flex flex-col text-left"
+      >
+        <label htmlFor="name" className="mb-1 text-sm font-medium">Name</label>
+        <input
+          className="p-3 rounded-xl border border-gray-600 bg-white/20 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300 hover:bg-white/30"
+          type="text"
+          onChange={handleChange}
+          name="name"
+          placeholder="Enter your name"
+          value={signupInfo.name}
+        />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.6 }}
+        className="flex flex-col text-left"
+      >
+        <label htmlFor="email" className="mb-1 text-sm font-medium">Email</label>
+        <input
+          className="p-3 rounded-xl border border-gray-600 bg-white/20 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300 hover:bg-white/30"
+          type="email"
+          onChange={handleChange}
+          name="email"
+          placeholder="Enter your email"
+          value={signupInfo.email}
+        />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.8 }}
+        className="flex flex-col text-left"
+      >
+        <label htmlFor="password" className="mb-1 text-sm font-medium">Password</label>
+        <input
+          className="p-3 rounded-xl border border-gray-600 bg-white/20 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300 hover:bg-white/30"
+          type="password"
+          onChange={handleChange}
+          name="password"
+          placeholder="Enter your password"
+          value={signupInfo.password}
+        />
+      </motion.div>
+
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="bg-blue-600 hover:bg-blue-700 transition font-bold text-white rounded-xl py-3 mt-4"
+        type="submit"
+      >
+        Sign Up
+      </motion.button>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="text-center text-sm"
+      >
+        Already have an account?{" "}
+        <Link to="/login" className="text-blue-400 hover:text-blue-300 font-medium">
+          Login
+        </Link>
+      </motion.div>
+    </form>
+  </motion.div>
+  <ToastContainer />
+</div>
   )
 }
 

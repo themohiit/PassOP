@@ -24,7 +24,7 @@ function Signup() {
             if(!name || !email || !password){
                 return handleError('name, email and password are required')
             }
-            try {const url = 'http://localhost:8080/auth/signup';
+            try {const url = 'https://pass-op-api.vercel.app/auth/signup';
             const response = await fetch(url,{
                 method:"POST",
                 headers:{

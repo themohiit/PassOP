@@ -12,6 +12,9 @@ function Navbar() {
         navigate('/login');
     }, 1000);
   }
+  const handleGithubRedirect = () => { 
+    window.open('https://github.com/themohiit', '_blank');
+  };
   return (
     <div className='bg-gray-800 w-100vw h-[10vh] flex justify-around items-center'>
       <div className='font-bold'>
@@ -21,7 +24,7 @@ function Navbar() {
         </div>
         <div className='gap-x-5 flex'>
 
-      <button className='bg-green-800 text-white rounded-lg w-20 h-10'>Github</button>
+      <button onClick={handleGithubRedirect} className='bg-green-800 text-white rounded-lg w-20 h-10'>Github</button>
       <button onClick={handleLogout} className='bg-green-800 text-white rounded-lg w-20 h-10'>Log Out</button>
         </div>
     </div>
